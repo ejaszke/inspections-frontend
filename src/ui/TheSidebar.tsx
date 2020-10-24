@@ -23,7 +23,7 @@ const TheSidebar = () => {
     return (
         <CSidebar show={show} onShowChange={(val: boolean) => dispatch({ type: 'set', sidebarShow: val })}>
             <CSidebarBrand className="d-md-down-none" to="/">
-                <h5 style={{ color: 'white', paddingTop: '11px' }}>ePlacówka</h5>
+                <h5 style={{ color: 'white', paddingTop: '11px' }}>Inspekcje</h5>
             </CSidebarBrand>
             <CSidebarNav>
                 <CCreateElement
