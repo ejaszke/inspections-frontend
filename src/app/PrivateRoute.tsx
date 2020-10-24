@@ -1,15 +1,15 @@
-/*eslint-disable */
-import React, { useContext } from 'react';
+import React from 'react';
 import { Route, Redirect, RouteProps } from 'react-router-dom';
-import { UserContext } from '../features/user/UserProvider';
+import { useSelector } from 'react-redux';
+import { RootState } from './rootReducer';
 
 const PrivateRoute: React.FC<RouteProps> = ({ component: Component, ...children }) => {
-    const { user } = useContext(UserContext);
+    const token = useSelector((state: RootState) => state.user.token);
 
     return (
         <Route
             {...children}
-            render={(routeProps) => (!!user ? Component && <Component {...routeProps} /> : <Redirect to="/login" />)}
+            render={(routeProps) => (!!token ? Component && <Component {...routeProps} /> : <Redirect to="/login" />)}
         />
     );
 };

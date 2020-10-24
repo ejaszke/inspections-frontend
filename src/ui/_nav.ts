@@ -12,6 +12,12 @@ export default [
         icon: 'cil-speedometer',
     },
     {
+        _tag: 'CSidebarNavItem',
+        name: 'Wyloguj',
+        to: '/sign-out',
+        icon: 'cil-account-logout',
+    },
+    {
         _tag: 'CSidebarNavTitle',
         _children: ['Theme'],
     },
