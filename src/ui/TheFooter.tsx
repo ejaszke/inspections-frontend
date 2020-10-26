@@ -6,7 +6,7 @@ const TheFooter = () => {
         <CFooter fixed={false}>
             <div>
                 <a href="https://eplacowka.pl" target="_blank" rel="noopener noreferrer">
-                    E-placówka
+                    Inspekcje
                 </a>
                 <span className="ml-1">&copy; 2020</span>
             </div>
