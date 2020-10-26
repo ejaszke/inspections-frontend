@@ -15,7 +15,7 @@ import { Credentials } from '../model/credentials';
 import { login } from '../store/userSlice';
 
 const validationSchema = Yup.object<Credentials>().shape({
-	username: Yup.string().required('Pole wymagane'),
+	email: Yup.string().required('Pole wymagane'),
 	password: Yup.string().required('Pole wymagane')
 });
 
@@ -26,13 +26,12 @@ export function SignInFormContainer() {
 		dispatch(login(values));
 	};
 
-
 	return <CCard className="p-4">
 		<CCardBody>
 			<h1>Logowanie</h1>
 			<Formik<Credentials>
 				initialValues={{
-					username: '',
+					email: '',
 					password: ''
 				}}
 				validationSchema={validationSchema}
@@ -42,8 +41,8 @@ export function SignInFormContainer() {
 					<Form>
 
 						<CLabel>{'Nazwa użytkownika'}</CLabel>
-						<CFormikInput id="username"
-									  name="username"
+						<CFormikInput id="email"
+									  name="email"
 									  type="text"
 						/>
 						<CLabel>{'Hasło'}</CLabel>

@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import * as Sentry from '@sentry/react';
 import { Credentials } from '../model/credentials';
 import history from '../../../app/services/history';
+import { UserApi } from '../../../api/userApi';
 
 const token = localStorage.getItem('session');
 const storedToken: Token = token ? JSON.parse(token) : null;
@@ -42,16 +43,10 @@ const userSlice = createSlice({
 
 export const login = (credentials: Credentials): AppThunk => async (dispatch: AppDispatch) => {
 	try {
-		if (credentials.username === 'demo@email.com' && credentials.password === 'demouser') {
-			// const result =  await UserApi.loginUser(credentials);
-			const result: Token = {
-				access_token: 'correct_token'
-			};
-			dispatch(userSlice.actions.loginSuccess(result));
-			saveToken(result);
-			history.push('/inspections/example')
-		}
-
+		const result = await UserApi.loginUser(credentials);
+		dispatch(userSlice.actions.loginSuccess(result.data));
+		saveToken(result.data);
+		history.push('/inspections/example')
 	} catch (e) {
 		if (e.response.status === 400) {
 			toast.warn("Nieprawidłowy email lub hasło")
