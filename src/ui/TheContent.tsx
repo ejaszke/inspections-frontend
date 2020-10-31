@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { Redirect, Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import { CContainer } from '@coreui/react';
 
 // routes config
@@ -21,7 +21,7 @@ const TheContent = () => {
                         {routes.map((route, idx) => (
                             <PrivateRoute key={idx} exact={route.exact} path={route.path} component={route.component} />
                         ))}
-                        <Redirect from="/" to="/product-group" />
+                        {/*<Redirect from="/" to="/product-group" />*/}
                     </Switch>
                 </Suspense>
             </CContainer>

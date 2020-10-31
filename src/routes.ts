@@ -1,8 +1,7 @@
 import React, { LazyExoticComponent } from 'react';
 
-const ProductGroupContainer = React.lazy(() =>
-    import('./features/example/containers/ExampleTableContainer'),
-);
+const ExampleContainer = React.lazy(() => import('./features/example/containers/ExampleTableContainer'));
+const SignOutContainer = React.lazy(() => import('./features/user/containers/SignOutContainer'));
 
 const Toaster = React.lazy(() => import('./views/notifications/toaster/Toaster'));
 const Tables = React.lazy(() => import('./views/base/tables/Tables'));
@@ -48,7 +47,8 @@ export interface RouteProps {
 }
 
 const businessRoutes: RouteProps[] = [
-    { path: '/example', exact: true, name: 'Product Groups', component: ProductGroupContainer },
+    { path: '/example', exact: true, name: 'Product Groups', component: ExampleContainer },
+    { path: '/sign-out', exact: true, name: 'Sign Out', component: SignOutContainer }
 ];
 
 const devRoutes: RouteProps[] = [

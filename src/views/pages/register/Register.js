@@ -32,7 +32,7 @@ const Register = () => {
                                                 <CIcon name="cil-user" />
                                             </CInputGroupText>
                                         </CInputGroupPrepend>
-                                        <CInput type="text" placeholder="Username" autoComplete="username" />
+                                        <CInput type="text" placeholder="Username" autoComplete="email" />
                                     </CInputGroup>
                                     <CInputGroup className="mb-3">
                                         <CInputGroupPrepend>
