@@ -3,5 +3,7 @@ export const dateFields = [
 	'issueDate',
 	'updatedAt',
 	'createdAt',
-	'date'
+	'date',
+	'start_time',
+	'end_time'
 ];

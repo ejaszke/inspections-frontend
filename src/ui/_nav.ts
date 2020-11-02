@@ -13,6 +13,12 @@ export default [
     },
     {
         _tag: 'CSidebarNavItem',
+        name: 'Inspekcje',
+        to: '/all',
+        icon: 'cil-speedometer',
+    },
+    {
+        _tag: 'CSidebarNavItem',
         name: 'Wyloguj',
         to: '/sign-out',
         icon: 'cil-account-logout',
