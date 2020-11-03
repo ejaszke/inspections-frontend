@@ -11,6 +11,7 @@ import { NoDataComponent } from '../../../shared/components/NoDataComponent';
 import InspectionTimeRegisterDialogComponent from './InspectionTimeRegisterDialogComponent';
 import InspectionTimeActionsComponent from './InspectionTimeActionsComponent';
 import InspectionTimeDeleteDialogContainer from '../containers/InspectionTimeDeleteDialogContainer';
+import InspectionTimeEditDialogComponent from './InspectionTimeEditDialogComponent';
 
 const columns = [
 	{
@@ -48,6 +49,7 @@ const options = {
 
 export default function InspectionTimeTableComponent() {
 	const editedData = useSelector((state: RootState) => state.inspections.editedData);
+	const inspectionTimes = editedData && editedData.times ? editedData.times : [];
 
 	return (
 		<CRow>
@@ -56,15 +58,16 @@ export default function InspectionTimeTableComponent() {
 					<CCardBody>
 						<InspectionTimeRegisterDialogComponent/>
 						<BootstrapTable
-							wrapperClasses="table-responsive"
+							wrapperClasses={inspectionTimes.length > 1 ? 'table-responsive' : ''}
 							bootstrap4
 							keyField="id"
-							data={(editedData && editedData.times) || []}
+							data={inspectionTimes}
 							striped
 							noDataIndication={NoDataComponent}
 							pagination={paginationFactory(options)}
 							columns={columns}
 						/>
+						<InspectionTimeEditDialogComponent/>
 						<InspectionTimeDeleteDialogContainer/>
 					</CCardBody>
 				</CCard>

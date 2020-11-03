@@ -15,7 +15,7 @@ export default function SignIn() {
 	const token = useSelector((state: RootState) => state.user.token);
 
 	if (token) {
-		return <Redirect to={'/example'}/>
+		return <Redirect to={'/all'}/>
 	}
 
 	return <div className="c-app c-default-layout flex-row align-items-center">

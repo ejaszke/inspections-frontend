@@ -11,6 +11,7 @@ interface InspectionTimeState {
 	editedData: InspectionTime | null;
 	deleteData: InspectionTime | null;
 	isDeleteDialogOpen: boolean;
+	isEditDialogOpen: boolean;
 }
 
 const initialState: InspectionTimeState = {
@@ -18,20 +19,21 @@ const initialState: InspectionTimeState = {
 	editedData: null,
 	deleteData: null,
 	isDeleteDialogOpen: false,
+	isEditDialogOpen: false
 };
 
 const inspectionTimeSlice = createSlice({
 	name: 'inspectionTime',
 	initialState,
 	reducers: {
-		setEditedData(state, action: PayloadAction<{ inspectionTime: InspectionTime | null }>) {
-			return { ...state, editedData: action.payload.inspectionTime };
-		},
 		setRegisterDialogOpen(state, action: PayloadAction<boolean>) {
-			return { ...state, isRegisterDialogOpen: action.payload };
+			return {...state, isRegisterDialogOpen: action.payload};
 		},
-		setDeleteDialogOpen(state, action: PayloadAction<{ isOpen: boolean; inspectionTime: InspectionTime | null }>) {
-			return { ...state, isDeleteDialogOpen: action.payload.isOpen, deleteData: action.payload.inspectionTime };
+		setDeleteDialogOpen(state, action: PayloadAction<{isOpen: boolean; inspectionTime: InspectionTime | null}>) {
+			return {...state, isDeleteDialogOpen: action.payload.isOpen, deleteData: action.payload.inspectionTime};
+		},
+		setEditDialogOpen(state, action: PayloadAction<{isOpen: boolean; inspectionTime: InspectionTime | null}>) {
+			return {...state, isEditDialogOpen: action.payload.isOpen, editedData: action.payload.inspectionTime};
 		},
 	}
 });
@@ -49,7 +51,9 @@ export const registerInspectionTime = (inspectionId: string, inspectionTime: Ins
 		dispatch(setRegisterDialogOpen(false));
 		toast.success('Dodano czas inspekcji')
 	} catch (e) {
-		toast.error('Wystąpił problem z zapisem');
+		if (e.response.status !== 401) {
+			toast.error('Wystąpił problem z zapisem');
+		}
 	}
 };
 
@@ -57,11 +61,18 @@ export const editInspectionTime = (
 	inspectionId: string,
 	inspectionTimeId: string,
 	inspectionTime: InspectionTime
-): AppThunk => async () => {
+): AppThunk => async (dispatch: AppDispatch, getState: () => RootState) => {
 	try {
 		await InspectionTimeApi.fetchEditInspectionTime(inspectionId, inspectionTimeId, inspectionTime);
+		const editedData = getState().inspections.editedData;
+		if (editedData && editedData.id) {
+			dispatch(loadInspectionById(editedData.id))
+		}
+		dispatch(setEditDialogOpen(false, null))
 	} catch (e) {
-		toast.error('Wystąpił problem z zapisem');
+		if (e.response.status !== 401) {
+			toast.error('Wystąpił problem z zapisem');
+		}
 	}
 };
 
@@ -77,7 +88,9 @@ export const deleteInspectionTime = (
 		}
 		dispatch(setDeleteDialogOpen(false, null))
 	} catch (e) {
-		toast.error('Wystąpił problem z usunięciem');
+		if (e.response.status !== 401) {
+			toast.error('Wystąpił problem z usunięciem');
+		}
 	}
 };
 
@@ -86,7 +99,11 @@ export const setRegisterDialogOpen = (isOpen: boolean) => (dispatch: AppDispatch
 };
 
 export const setDeleteDialogOpen = (isOpen: boolean, inspectionTime: InspectionTime | null) => (dispatch: AppDispatch) => {
-	dispatch(inspectionTimeSlice.actions.setDeleteDialogOpen({ isOpen, inspectionTime }));
+	dispatch(inspectionTimeSlice.actions.setDeleteDialogOpen({isOpen, inspectionTime}));
+};
+
+export const setEditDialogOpen = (isOpen: boolean, inspectionTime: InspectionTime | null) => (dispatch: AppDispatch) => {
+	dispatch(inspectionTimeSlice.actions.setEditDialogOpen({isOpen, inspectionTime}));
 };
 
 export default inspectionTimeSlice.reducer;

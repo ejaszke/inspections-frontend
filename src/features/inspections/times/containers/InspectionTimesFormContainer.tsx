@@ -6,6 +6,7 @@ import { RootState } from '../../../../app/rootReducer';
 import {
 	editInspectionTime,
 	registerInspectionTime,
+	setEditDialogOpen,
 	setRegisterDialogOpen
 } from '../store/inspectionTimeSlice';
 import { useParams } from 'react-router';
@@ -50,7 +51,11 @@ export default function InspectionTimesFormContainer(props: Props) {
 	};
 
 	const handleClose = () => {
-		dispatch(setRegisterDialogOpen(false));
+		if (!isEditMode) {
+			dispatch(setRegisterDialogOpen(false));
+		} else {
+			dispatch(setEditDialogOpen(false, null));
+		}
 	};
 
 	return (<>
@@ -58,8 +63,8 @@ export default function InspectionTimesFormContainer(props: Props) {
 			enableReinitialize
 			initialValues={{
 				date: editedData && editedData.date ? formatDate('date', editedData.date) : '',
-				start_time: editedData && editedData.start_time ? formatDate('start_time', editedData.start_time) : '',
-				end_time: editedData && editedData.end_time ? formatDate('end_time', editedData.end_time) : '',
+				start_time: editedData && editedData.start_time ? editedData.start_time : '',
+				end_time: editedData && editedData.end_time ? editedData.end_time : '',
 			}}
 			validationSchema={validationSchema}
 			onSubmit={handleSubmit}

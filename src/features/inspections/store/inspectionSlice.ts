@@ -46,14 +46,14 @@ const inspectionSlice = createSlice({
 				}
 			}
 		},
-		setEditedData(state, action: PayloadAction<{ inspection: Inspection | null }>) {
-			return { ...state, editedData: action.payload.inspection };
+		setEditedData(state, action: PayloadAction<{inspection: Inspection | null}>) {
+			return {...state, editedData: action.payload.inspection};
 		},
 		setRegisterDialogOpen(state, action: PayloadAction<boolean>) {
-			return { ...state, isRegisterDialogOpen: action.payload };
+			return {...state, isRegisterDialogOpen: action.payload};
 		},
-		setDeleteDialogOpen(state, action: PayloadAction<{ isOpen: boolean; inspection: Inspection | null }>) {
-			return { ...state, isDeleteDialogOpen: action.payload.isOpen, deleteData: action.payload.inspection };
+		setDeleteDialogOpen(state, action: PayloadAction<{isOpen: boolean; inspection: Inspection | null}>) {
+			return {...state, isDeleteDialogOpen: action.payload.isOpen, deleteData: action.payload.inspection};
 		},
 	}
 });
@@ -63,7 +63,9 @@ export const loadInspections = (): AppThunk => async (dispatch: AppDispatch) => 
 		const result = await InspectionApi.fetchInspections();
 		dispatch(inspectionSlice.actions.receiveInspections(result.data));
 	} catch (e) {
-		toast.error('Wystąpił problem z pobraniem listy');
+		if (e.response.status !== 401) {
+			toast.error('Wystąpił problem z pobraniem listy');
+		}
 	}
 };
 
@@ -75,7 +77,9 @@ export const registerInspection = (inspection: Inspection): AppThunk => async (d
 		history.push(`/inspections/all/edit/${result.data.id}`);
 		toast.success('Inspekcja dodana')
 	} catch (e) {
-		toast.error('Wystąpił problem z zapisem');
+		if (e.response.status !== 401) {
+			toast.error('Wystąpił problem z zapisem');
+		}
 	}
 };
 
@@ -86,7 +90,9 @@ export const editInspection = (id: string, inspection: Inspection): AppThunk => 
 		dispatch(inspectionSlice.actions.editInspectionSuccess(result.data));
 	} catch (e) {
 		if (e.response) {
-			toast.error('Wystąpił problem z zapisem');
+			if (e.response.status !== 401) {
+				toast.error('Wystąpił problem z zapisem');
+			}
 		}
 	}
 };
@@ -96,7 +102,9 @@ export const loadInspectionById = (id: string): AppThunk => async (dispatch: App
 		const result = await InspectionApi.fetchInspectionById(id);
 		dispatch(inspectionSlice.actions.receiveInspection(result.data));
 	} catch (e) {
-		toast.error('Wystąpił problem z pobraniem');
+		if (e.response.status !== 401) {
+			toast.error('Wystąpił problem z pobraniem');
+		}
 	}
 };
 
@@ -104,14 +112,17 @@ export const deleteInspection = (id: string): AppThunk => async (dispatch: AppDi
 	try {
 		await InspectionApi.fetchDeleteInspection(id);
 		dispatch(loadInspections());
+		dispatch(setDeleteDialogOpen(false, null));
 		toast.success('Inspekcja została usunięta');
 	} catch (e) {
-		toast.error('Wystąpił problem');
+		if (e.response.status !== 401) {
+			toast.error('Wystąpił problem');
+		}
 	}
 };
 
 export const setEditedData = (inspection: Inspection | null) => (dispatch: AppDispatch) => {
-	dispatch(inspectionSlice.actions.setEditedData({ inspection }));
+	dispatch(inspectionSlice.actions.setEditedData({inspection}));
 };
 
 export const setRegisterDialogOpen = (isOpen: boolean) => (dispatch: AppDispatch) => {
@@ -119,7 +130,7 @@ export const setRegisterDialogOpen = (isOpen: boolean) => (dispatch: AppDispatch
 };
 
 export const setDeleteDialogOpen = (isOpen: boolean, inspection: Inspection | null) => (dispatch: AppDispatch) => {
-	dispatch(inspectionSlice.actions.setDeleteDialogOpen({ isOpen, inspection }));
+	dispatch(inspectionSlice.actions.setDeleteDialogOpen({isOpen, inspection}));
 };
 
 export default inspectionSlice.reducer;

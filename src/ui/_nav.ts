@@ -1,18 +1,6 @@
 export default [
     {
         _tag: 'CSidebarNavItem',
-        name: 'Główna aplikacja',
-        to: '/',
-        icon: 'cil-speedometer',
-    },
-    {
-        _tag: 'CSidebarNavItem',
-        name: 'Example',
-        to: '/example',
-        icon: 'cil-speedometer',
-    },
-    {
-        _tag: 'CSidebarNavItem',
         name: 'Inspekcje',
         to: '/all',
         icon: 'cil-speedometer',
