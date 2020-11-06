@@ -46,7 +46,7 @@ export const login = (credentials: Credentials): AppThunk => async (dispatch: Ap
 		const result = await UserApi.loginUser(credentials);
 		dispatch(userSlice.actions.loginSuccess(result.data));
 		saveToken(result.data);
-		history.push('/inspections/example')
+		history.push('/inspections/all')
 	} catch (e) {
 		if (e.response.status === 400) {
 			toast.warn("Nieprawidłowy email lub hasło")
@@ -59,12 +59,13 @@ export const login = (credentials: Credentials): AppThunk => async (dispatch: Ap
 
 export const logout = () => (dispatch: AppDispatch) => {
 	try {
-		// API CALL?
 		dispatch(userSlice.actions.logoutSuccess(null));
 		localStorage.removeItem('session');
 	} catch (e) {
-		toast.error('Wystąpił problem');
-		Sentry.captureException(e);
+		if (e.response.status !== 401) {
+			toast.error('Wystąpił problem');
+			Sentry.captureException(e);
+		}
 	}
 };
 
