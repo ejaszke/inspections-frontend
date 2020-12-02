@@ -1,4 +1,5 @@
 export enum AppRoutePath {
 	base = '/inspections',
-	login = '/login'
+	login = '/login',
+	confirmationAdd = '/:id/confirmations/new'
 }

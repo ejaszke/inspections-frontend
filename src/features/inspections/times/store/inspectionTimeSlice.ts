@@ -68,7 +68,8 @@ export const editInspectionTime = (
 		if (editedData && editedData.id) {
 			dispatch(loadInspectionById(editedData.id))
 		}
-		dispatch(setEditDialogOpen(false, null))
+		dispatch(setEditDialogOpen(false, null));
+		toast.success('Zapisano zmiany');
 	} catch (e) {
 		if (e.response.status !== 401) {
 			toast.error('Wystąpił problem z zapisem');
@@ -86,7 +87,8 @@ export const deleteInspectionTime = (
 		if (edited && edited.id) {
 			dispatch(loadInspectionById(edited.id));
 		}
-		dispatch(setDeleteDialogOpen(false, null))
+		dispatch(setDeleteDialogOpen(false, null));
+		toast.success('Usunięto pozycję');
 	} catch (e) {
 		if (e.response.status !== 401) {
 			toast.error('Wystąpił problem z usunięciem');
