@@ -8,7 +8,7 @@ const rootReducer = combineReducers({
     core,
     user,
     inspections,
-    inspectionTimes
+    inspectionTimes,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

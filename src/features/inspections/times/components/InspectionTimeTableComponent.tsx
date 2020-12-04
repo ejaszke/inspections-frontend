@@ -14,64 +14,64 @@ import InspectionTimeDeleteDialogContainer from '../containers/InspectionTimeDel
 import InspectionTimeEditDialogComponent from './InspectionTimeEditDialogComponent';
 
 const columns = [
-	{
-		dataField: 'date',
-		text: 'Data',
-	},
-	{
-		dataField: 'start_time',
-		text: 'Godzina ropoczęcia',
-	},
-	{
-		dataField: 'end_time',
-		text: 'Godzina zakończenia',
-	},
-	{
-		dataField: 'actions',
-		text: '',
-		formatter: InspectionTimeActionsComponent,
-		headerAttrs: {width: 110},
-	}
+    {
+        dataField: 'date',
+        text: 'Data',
+    },
+    {
+        dataField: 'start_time',
+        text: 'Godzina ropoczęcia',
+    },
+    {
+        dataField: 'end_time',
+        text: 'Godzina zakończenia',
+    },
+    {
+        dataField: 'actions',
+        text: '',
+        formatter: InspectionTimeActionsComponent,
+        headerAttrs: { width: 110 },
+    },
 ];
 
 const options = {
-	sizePerPageList: [
-		{
-			text: '5',
-			value: 5,
-		},
-		{
-			text: '15',
-			value: 15,
-		},
-	],
+    sizePerPageList: [
+        {
+            text: '5',
+            value: 5,
+        },
+        {
+            text: '15',
+            value: 15,
+        },
+    ],
 };
 
 export default function InspectionTimeTableComponent() {
-	const editedData = useSelector((state: RootState) => state.inspections.editedData);
-	const inspectionTimes = editedData && editedData.times ? editedData.times : [];
+    const editedData = useSelector((state: RootState) => state.inspections.updatedInspection);
+    const inspectionTimes = editedData && editedData.times ? editedData.times : [];
 
-	return (
-		<CRow>
-			<CCol>
-				<CCard>
-					<CCardBody>
-						<InspectionTimeRegisterDialogComponent/>
-						<BootstrapTable
-							wrapperClasses={inspectionTimes.length > 1 ? 'table-responsive' : ''}
-							bootstrap4
-							keyField="id"
-							data={inspectionTimes}
-							striped
-							noDataIndication={NoDataComponent}
-							pagination={paginationFactory(options)}
-							columns={columns}
-						/>
-						<InspectionTimeEditDialogComponent/>
-						<InspectionTimeDeleteDialogContainer/>
-					</CCardBody>
-				</CCard>
-			</CCol>
-		</CRow>
-	)
+    return (
+        <CRow>
+            <CCol>
+                <CCard>
+                    <CCardBody>
+                        <InspectionTimeRegisterDialogComponent />
+                        <BootstrapTable
+                            wrapperClasses={inspectionTimes.length > 1 ? 'table-responsive' : ''}
+                            bootstrap4
+                            keyField="id"
+                            data={inspectionTimes}
+                            striped
+                            noDataIndication={NoDataComponent}
+                            pagination={paginationFactory(options)}
+                            columns={columns}
+                        />
+                        <InspectionTimeEditDialogComponent />
+                        <InspectionTimeDeleteDialogContainer />
+                    </CCardBody>
+                </CCard>
+            </CCol>
+        </CRow>
+    );
 }

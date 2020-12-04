@@ -14,79 +14,79 @@ import InspectionDeleteDialogContainer from '../components/InspectionDeleteDialo
 import paginationFactory from 'react-bootstrap-table2-paginator';
 
 const columns = [
-	{
-		dataField: 'city',
-		text: 'Miasto',
-	},
-	{
-		dataField: 'street',
-		text: 'Ulica'
-	},
-	{
-		dataField: 'street_number',
-		text: 'Nr ulicy',
-	},
-	{
-		dataField: 'staircases',
-		text: 'Klatki schodowe'
-	},
-	{
-		dataField: 'created_at',
-		text: 'Data utworzenia'
-	},
-	{
-		dataField: 'actions',
-		text: '',
-		formatter: InspectionActionsComponent,
-		headerAttrs: { width: 110 },
-	}
+    {
+        dataField: 'city',
+        text: 'Miasto',
+    },
+    {
+        dataField: 'street',
+        text: 'Ulica',
+    },
+    {
+        dataField: 'street_number',
+        text: 'Nr ulicy',
+    },
+    {
+        dataField: 'staircases',
+        text: 'Klatki schodowe',
+    },
+    {
+        dataField: 'created_at',
+        text: 'Data utworzenia',
+    },
+    {
+        dataField: 'actions',
+        text: '',
+        formatter: InspectionActionsComponent,
+        headerAttrs: { width: 110 },
+    },
 ];
 
 const options = {
-	sizePerPageList: [
-		{
-			text: '15',
-			value: 15,
-		},
-		{
-			text: '25',
-			value: 25,
-		},
-		{
-			text: '50',
-			value: 50
-		}
-	],
+    sizePerPageList: [
+        {
+            text: '15',
+            value: 15,
+        },
+        {
+            text: '25',
+            value: 25,
+        },
+        {
+            text: '50',
+            value: 50,
+        },
+    ],
 };
 
 export default function InspectionTableContainer() {
-	const dispatch = useDispatch();
-	const { inspections } = useSelector((state: RootState) => state.inspections);
+    const dispatch = useDispatch();
+    const { inspections } = useSelector((state: RootState) => state.inspections);
 
-	useEffect(() => {
-		dispatch(loadInspections())
-	},[dispatch]);
+    useEffect(() => {
+        dispatch(loadInspections());
+    }, [dispatch]);
 
-	return (
-		<CRow>
-			<CCol>
-				<CCard>
-					<CCardBody>
-						<InspectionRegisterDialogComponent/>
-						<BootstrapTable
-							wrapperClasses="table-responsive"
-							bootstrap4
-							keyField="id"
-							data={inspections}
-							striped
-							noDataIndication={NoDataComponent}
-							pagination={paginationFactory(options)}
-							columns={columns}
-						/>
-						<InspectionDeleteDialogContainer/>
-					</CCardBody>
-				</CCard>
-			</CCol>
-		</CRow>
-	);
+    return (
+        <CRow>
+            <CCol>
+                <CCard>
+                    <CCardBody>
+                        <InspectionRegisterDialogComponent />
+                        <BootstrapTable
+                            wrapperClasses="table-responsive"
+                            bootstrap4
+                            keyField="id"
+                            data={inspections}
+                            striped
+                            noDataIndication={NoDataComponent}
+                            pagination={paginationFactory(options)}
+                            columns={columns}
+                        />
+                        <InspectionDeleteDialogContainer />
+                    </CCardBody>
+                </CCard>
+            </CCol>
+        </CRow>
+    );
 }

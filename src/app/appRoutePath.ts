@@ -1,4 +1,4 @@
 export enum AppRoutePath {
-	base = '/inspections',
-	login = '/login'
+    base = '/inspections',
+    login = '/login',
 }

@@ -7,25 +7,27 @@ import { setRegisterDialogOpen } from '../store/inspectionTimeSlice';
 import InspectionTimesFormContainer from '../containers/InspectionTimesFormContainer';
 
 export default function InspectionTimeRegisterDialogComponent() {
-	const dispatch = useDispatch();
-	const isDialogOpen = useSelector((state: RootState) => state.inspectionTimes.isRegisterDialogOpen);
+    const dispatch = useDispatch();
+    const isDialogOpen = useSelector((state: RootState) => state.inspectionTimes.isRegisterDialogOpen);
 
-	return (<>
-		<CFormGroup>
-			<Button color="success" onClick={() => dispatch(setRegisterDialogOpen(true))}>
-				Dodaj czas inspekcji
-			</Button>
-		</CFormGroup>
-		<CModal
-			show={isDialogOpen}
-			closeOnBackdrop={false}
-			size={'lg'}
-			onClose={() => dispatch(setRegisterDialogOpen(false))}
-		>
-			<CModalHeader closeButton>
-				<CModalTitle>Dodaj czas inspekcji</CModalTitle>
-			</CModalHeader>
-			{isDialogOpen && <InspectionTimesFormContainer isEditMode={false} />}
-		</CModal>
-	</>)
+    return (
+        <>
+            <CFormGroup>
+                <Button color="success" onClick={() => dispatch(setRegisterDialogOpen(true))}>
+                    Dodaj czas inspekcji
+                </Button>
+            </CFormGroup>
+            <CModal
+                show={isDialogOpen}
+                closeOnBackdrop={false}
+                size={'lg'}
+                onClose={() => dispatch(setRegisterDialogOpen(false))}
+            >
+                <CModalHeader closeButton>
+                    <CModalTitle>Dodaj czas inspekcji</CModalTitle>
+                </CModalHeader>
+                {isDialogOpen && <InspectionTimesFormContainer isEditMode={false} />}
+            </CModal>
+        </>
+    );
 }
