@@ -4,6 +4,7 @@ import { Inspection } from '../model/inspection';
 import { toast } from 'react-toastify';
 import { InspectionApi } from '../../../api/inspectionApi';
 import history from '../../../app/services/history';
+import { InspectionConfirmation } from '../../confirmations/model/inspectionConfirmation';
 
 interface InspectionsState {
     inspections: Inspection[];
@@ -121,6 +122,20 @@ export const deleteInspection = (id: string): AppThunk => async (dispatch: AppDi
         dispatch(loadInspections());
         dispatch(setDeleteDialogOpen(false, null));
         toast.success('Inspekcja została usunięta');
+    } catch (e) {
+        if (e.response.status !== 401) {
+            toast.error('Wystąpił problem');
+        }
+    }
+};
+
+export const registerInspectionConfirmation = (
+    id: string,
+    inspectionConfirmation: InspectionConfirmation,
+) => async () => {
+    try {
+        await InspectionApi.fetchRegisterInspectionConfirmation(id, inspectionConfirmation);
+        toast.success('Potwierdzono inspekcję');
     } catch (e) {
         if (e.response.status !== 401) {
             toast.error('Wystąpił problem');

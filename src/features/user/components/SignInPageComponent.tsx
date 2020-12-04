@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../../app/rootReducer';
 import { Redirect } from 'react-router';
 
-export default function SignIn() {
+export default function SignInPageComponent() {
     const token = useSelector((state: RootState) => state.user.token);
 
     if (token) {

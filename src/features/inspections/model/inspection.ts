@@ -1,5 +1,5 @@
 import { InspectionTime } from '../times/model/inspectionTime';
-import { Confirmation } from '../../confirmations/model/confirmation';
+import { InspectionConfirmation } from '../../confirmations/model/inspectionConfirmation';
 
 export interface Inspection {
     id?: string;
@@ -10,5 +10,5 @@ export interface Inspection {
     created_at?: string;
     updated_at?: string;
     times?: InspectionTime[];
-    confirmations?: Confirmation[];
+    confirmations?: InspectionConfirmation[];
 }
