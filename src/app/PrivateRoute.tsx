@@ -6,7 +6,7 @@ import { RootState } from './rootReducer';
 interface PrivateRouteProps extends RouteProps {
     // tslint:disable-next-line:no-any
     component: any;
-    isSignedIn: boolean;
+    isSignedIn?: boolean;
 }
 
 const PrivateRoute = (props: PrivateRouteProps) => {
