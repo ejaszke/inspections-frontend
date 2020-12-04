@@ -39,6 +39,7 @@ const options = {
 
 export default function ConfirmationTableComponent() {
 	const editedData = useSelector((state: RootState) => state.inspections.editedData);
+	const inspectionConfirmations = editedData && editedData.confirmations ? editedData.confirmations : [];
 
 	return (
 		<CRow>
@@ -46,10 +47,10 @@ export default function ConfirmationTableComponent() {
 				<CCard>
 					<CCardBody>
 						<BootstrapTable
-							wrapperClasses="table-responsive"
+							wrapperClasses={inspectionConfirmations.length > 1 ? 'table-responsive' : ''}
 							bootstrap4
 							keyField="id"
-							data={(editedData && editedData.confirmations) || []}
+							data={inspectionConfirmations}
 							striped
 							noDataIndication={NoDataComponent}
 							pagination={paginationFactory(options)}
