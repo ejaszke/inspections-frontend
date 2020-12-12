@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk, AppDispatch } from 'app/store';
-import axios from 'axios';
 import { User } from '../model/user';
 import { Token } from '../model/token';
 import { toast } from 'react-toastify';
@@ -8,6 +7,7 @@ import * as Sentry from '@sentry/react';
 import { Credentials } from '../model/credentials';
 import history from '../../../app/services/history';
 import { UserApi } from '../../../api/userApi';
+import { axiosInstance } from '../../../api/base';
 
 const token = localStorage.getItem('session');
 const storedToken: Token = token ? JSON.parse(token) : null;
@@ -75,6 +75,6 @@ const saveToken = (token: Token) => {
     const session = {
         access_token: token.access_token,
     };
-    axios.defaults.headers.common['Authorization'] = `Bearer ${token.access_token}`;
+    axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${token.access_token}`;
     localStorage.setItem('session', JSON.stringify(session));
 };
