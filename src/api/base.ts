@@ -8,3 +8,5 @@ const storedToken: Token = token ? JSON.parse(token) : null;
 if (storedToken && storedToken.access_token) {
     axios.defaults.headers.common['Authorization'] = `Bearer ${storedToken.access_token}`;
 }
+
+axios.defaults.baseURL = process.env.APP_API_ENDPOINT;
