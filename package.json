@@ -1,6 +1,6 @@
 {
-  "name": "canteen-sb",
-  "version": "0.1.0",
+  "name": "canteen-frontend",
+  "version": "0.1.1",
   "private": true,
   "dependencies": {
     "@coreui/coreui": "3.2.2",
