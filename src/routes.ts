@@ -93,6 +93,6 @@ const devRoutes: RouteProps[] = [
     { path: '/users/:id', exact: true, name: 'User Details', component: User },
 ];
 
-const routes: RouteProps[] = [...businessRoutes, ...devRoutes];
+const routes: RouteProps[] = [...businessRoutes, ...(process.env.NODE_ENV === 'development' ? devRoutes : [])];
 
 export default routes;
