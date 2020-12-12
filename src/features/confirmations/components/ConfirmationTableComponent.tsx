@@ -38,7 +38,7 @@ const options = {
 };
 
 export default function ConfirmationTableComponent() {
-    const editedData = useSelector((state: RootState) => state.inspections.editedData);
+    const editedData = useSelector((state: RootState) => state.inspections.updatedInspection);
     const inspectionConfirmations = editedData && editedData.confirmations ? editedData.confirmations : [];
 
     return (
