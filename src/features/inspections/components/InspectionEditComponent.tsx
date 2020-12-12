@@ -8,24 +8,26 @@ import InspectionTimeTableComponent from '../times/components/InspectionTimeTabl
 import ConfirmationTableComponent from '../../confirmations/components/ConfirmationTableComponent';
 
 export default function InspectionEditComponent() {
-	const inspectionId = useParams<{id: string}>().id;
-	const dispatch = useDispatch();
+    const inspectionId = useParams<{ id: string }>().id;
+    const dispatch = useDispatch();
 
-	useEffect(() => {
-		if (inspectionId) {
-			dispatch(loadInspectionById(inspectionId));
-		}
-	},[dispatch, inspectionId]);
+    useEffect(() => {
+        if (inspectionId) {
+            dispatch(loadInspectionById(inspectionId));
+        }
+    }, [dispatch, inspectionId]);
 
-	return (<CRow>
-		<CCol>
-			<CCard>
-				<InspectionFormContainer isEditMode/>
-			</CCard>
+    return (
+        <CRow>
+            <CCol>
+                <CCard>
+                    <InspectionFormContainer isEditMode />
+                </CCard>
 
-			<InspectionTimeTableComponent/>
+                <InspectionTimeTableComponent />
 
-			<ConfirmationTableComponent/>
-		</CCol>
-	</CRow>)
+                <ConfirmationTableComponent />
+            </CCol>
+        </CRow>
+    );
 }

@@ -13,68 +13,68 @@ const token = localStorage.getItem('session');
 const storedToken: Token = token ? JSON.parse(token) : null;
 
 interface UserState {
-	user: User | null
-	token: Token | null
+    user: User | null;
+    token: Token | null;
 }
 
 const initialState: UserState = {
-	user: null,
-	token: storedToken ? storedToken : null
+    user: null,
+    token: storedToken ? storedToken : null,
 };
 
 const userSlice = createSlice({
-	name: 'user',
-	initialState,
-	reducers: {
-		loginSuccess(state, action: PayloadAction<Token>) {
-			return {
-				...state,
-				token: action.payload
-			}
-		},
-		logoutSuccess(state, action) {
-			return {
-				...state,
-				token: action.payload
-			}
-		}
-	}
+    name: 'user',
+    initialState,
+    reducers: {
+        loginSuccess(state, action: PayloadAction<Token>) {
+            return {
+                ...state,
+                token: action.payload,
+            };
+        },
+        logoutSuccess(state, action) {
+            return {
+                ...state,
+                token: action.payload,
+            };
+        },
+    },
 });
 
 export const login = (credentials: Credentials): AppThunk => async (dispatch: AppDispatch) => {
-	try {
-		const result = await UserApi.loginUser(credentials);
-		dispatch(userSlice.actions.loginSuccess(result.data));
-		saveToken(result.data);
-		history.push('/inspections/all')
-	} catch (e) {
-		if (e.response.status === 400) {
-			toast.warn("Nieprawidłowy email lub hasło")
-		} else {
-			toast.error('Wystąpił problem');
-		}
-		Sentry.captureException(e);
-	}
+    try {
+        const result = await UserApi.loginUser(credentials);
+        dispatch(userSlice.actions.loginSuccess(result.data));
+        saveToken(result.data);
+        history.push('/inspections/all');
+    } catch (e) {
+        if (e.response.status === 400) {
+            toast.warn('Nieprawidłowy email lub hasło');
+        } else {
+            toast.error('Wystąpił problem');
+        }
+        Sentry.captureException(e);
+    }
 };
 
 export const logout = () => (dispatch: AppDispatch) => {
-	try {
-		dispatch(userSlice.actions.logoutSuccess(null));
-		localStorage.removeItem('session');
-	} catch (e) {
-		if (e.response.status !== 401) {
-			toast.error('Wystąpił problem');
-			Sentry.captureException(e);
-		}
-	}
+    try {
+        dispatch(userSlice.actions.logoutSuccess(null));
+        localStorage.removeItem('session');
+    } catch (e) {
+        if (e.response.status !== 401) {
+            toast.error('Wystąpił problem');
+            Sentry.captureException(e);
+        }
+    }
 };
 
-export default userSlice.reducer
+export default userSlice.reducer;
 
 const saveToken = (token: Token) => {
-	const session = {
-		access_token: token.access_token,
-	};
-	axios.defaults.headers.common['Authorization'] = `Bearer ${token.access_token}`;
-	localStorage.setItem('session', JSON.stringify(session));
+    const session = {
+        access_token: token.access_token,
+    };
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token.access_token}`;
+    localStorage.setItem('session', JSON.stringify(session));
 };

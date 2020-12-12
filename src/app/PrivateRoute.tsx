@@ -3,7 +3,14 @@ import { Route, Redirect, RouteProps } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from './rootReducer';
 
-const PrivateRoute: React.FC<RouteProps> = ({ component: Component, ...children }) => {
+interface PrivateRouteProps extends RouteProps {
+    // tslint:disable-next-line:no-any
+    component: any;
+    isSignedIn?: boolean;
+}
+
+const PrivateRoute = (props: PrivateRouteProps) => {
+    const { component: Component, isSignedIn, ...children } = props;
     const token = useSelector((state: RootState) => state.user.token);
 
     return (

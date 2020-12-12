@@ -1159,6 +1159,15 @@
   resolved "https://registry.yarnpkg.com/@coreui/utils/-/utils-1.3.1.tgz#ebe6fa00ae7f46d166b26f116e74d55dfc89f5e0"
   integrity sha512-WuWHX7bg89cJH34TWVsLe9RsxzBhTApj+X2Ja19xhjcpxt5Gv11Ozm+fwYt6DD7DgncTvpwYrMcnNlpp701UOg==
 
+"@craco/craco@^5.7.0":
+  version "5.9.0"
+  resolved "https://registry.yarnpkg.com/@craco/craco/-/craco-5.9.0.tgz#dcd34330b558596a4841374743071b7fa041dce9"
+  integrity sha512-2Q8gIB4W0/nPiUxr9iAKUhGsFlXYN0/wngUdK1VWtfV2NtBv+yllNn2AjieaLbttgpQinuOYmDU65vocC0NMDg==
+  dependencies:
+    cross-spawn "^7.0.0"
+    lodash "^4.17.15"
+    webpack-merge "^4.2.2"
+
 "@csstools/convert-colors@^1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
@@ -1168,42 +1177,6 @@
   version "10.1.0"
   resolved "https://registry.yarnpkg.com/@csstools/normalize.css/-/normalize.css-10.1.0.tgz#f0950bba18819512d42f7197e56c518aa491cf18"
   integrity sha512-ij4wRiunFfaJxjB0BdrYHIH8FxBJpOwNPhhAcunlmPdXudL1WQV1qoP9un6JsEBAgQH+7UXyyjh0g7jTxXK6tg==
-
-"@feathersjs/client@^4.5.7":
-  version "4.5.8"
-  resolved "https://registry.yarnpkg.com/@feathersjs/client/-/client-4.5.8.tgz#3b2d527e0d2c86dba996d1a2cf1dc7cbd49c4670"
-  integrity sha512-I2p+IyczDbOJnX+SPxovMFTroVONfyr2vsYoPF1nIj/m3ms6kJRL8taVguVtGROr76CgkoDYWMkaRU2cjXeeZQ==
-
-"@feathersjs/commons@^4.5.8":
-  version "4.5.8"
-  resolved "https://registry.yarnpkg.com/@feathersjs/commons/-/commons-4.5.8.tgz#12351a1796f707a9940e83e875ba414f8c15291d"
-  integrity sha512-8HFQjJ5fkciLbvwWOsbtUvAIOFKMRIXLg+Ynm4HLjK2wHwpWtppkYxe3TfVbc254SYigmQ1c9kK0ERjrn6CqqQ==
-
-"@feathersjs/errors@^4.5.8":
-  version "4.5.8"
-  resolved "https://registry.yarnpkg.com/@feathersjs/errors/-/errors-4.5.8.tgz#4ec2d954953990f5fd61d81459577cd0e0e082e0"
-  integrity sha512-PPpTHpCuWR0nbs4vvQEdXC5gLnWHmeDCF+hm9IJouzYkYIjt0UG/vKvPCBNqCREVHVfSrszdzI1MSeHRSUQddQ==
-  dependencies:
-    debug "^4.1.1"
-
-"@feathersjs/feathers@^4.5.7":
-  version "4.5.8"
-  resolved "https://registry.yarnpkg.com/@feathersjs/feathers/-/feathers-4.5.8.tgz#4d9e7fe035d568f5186c7d4669b57ab97a809d53"
-  integrity sha512-6d8oOPGZu4unda4XXNXV8nzaUI/OsUXY7s30HFDFvf7c81A2oe2uQ/u8OdGEiKpKcX5Ugq9lKYhiYCvMM3dibA==
-  dependencies:
-    "@feathersjs/commons" "^4.5.8"
-    debug "^4.1.1"
-    events "^3.2.0"
-    uberproto "^2.0.6"
-
-"@feathersjs/rest-client@^4.5.7":
-  version "4.5.8"
-  resolved "https://registry.yarnpkg.com/@feathersjs/rest-client/-/rest-client-4.5.8.tgz#4f9030832839994670bd0e1b79b37e153a9bda4d"
-  integrity sha512-YG/CuuOHKlQI+94hsv0rROkYFh1+vf5Qb1ElJx3M/KiU36JtGuswIVnpEhhH3Gw+nprvJY1FZFufB78YBHk+3Q==
-  dependencies:
-    "@feathersjs/commons" "^4.5.8"
-    "@feathersjs/errors" "^4.5.8"
-    qs "^6.9.4"
 
 "@hapi/address@2.x.x":
   version "2.1.4"
@@ -4840,11 +4813,6 @@ events@^3.0.0:
   resolved "https://registry.yarnpkg.com/events/-/events-3.1.0.tgz#84279af1b34cb75aa88bf5ff291f6d0bd9b31a59"
   integrity sha512-Rv+u8MLHNOdMjTAFeT3nCjHn2aGlx435FP/sDHNaRhDEMwyI/aB22Kj2qIN8R0cw3z28psEQLYwxVKLsKrMgWg==
 
-events@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/events/-/events-3.2.0.tgz#93b87c18f8efcd4202a461aec4dfc0556b639379"
-  integrity sha512-/46HWwbfCX2xTawVfkKLGxMifJYQBWMwY1mjywRtb4c9x8l5NP3KoJtnIOiL1hfdRkIuYhETxQlo62IF8tcnlg==
-
 eventsource@^1.0.7:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/eventsource/-/eventsource-1.0.7.tgz#8fbc72c93fcd34088090bc0a4e64f4b5cee6d8d0"
@@ -7774,6 +7742,11 @@ mixin-object@^2.0.1:
   dependencies:
     minimist "^1.2.5"
 
+moment@^2.29.0:
+  version "2.29.1"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
+  integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
+
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/move-concurrently/-/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
@@ -9554,11 +9527,6 @@ qs@6.7.0:
   version "6.7.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.7.0.tgz#41dc1a015e3d581f1621776be31afb2876a9b1bc"
   integrity sha512-VCdBRNFTX1fyE7Nb6FYoURo/SPe62QCaAyzJvUjwRaIsc+NePBEniHlvxFmmX56+HZphIGtV0XeCirBtpDrTyQ==
-
-qs@^6.9.4:
-  version "6.9.4"
-  resolved "https://registry.yarnpkg.com/qs/-/qs-6.9.4.tgz#9090b290d1f91728d3c22e54843ca44aea5ab687"
-  integrity sha512-A1kFqHekCTM7cz0udomYUoYNWjBebHm/5wzU/XqrBRBNWectVH0QIiN+NEcZ0Dte5hvzHwbr8+XQmguPhJ6WdQ==
 
 qs@~6.5.2:
   version "6.5.2"
@@ -11569,11 +11537,6 @@ typescript@~3.7.2:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.7.5.tgz#0692e21f65fd4108b9330238aac11dd2e177a1ae"
   integrity sha512-/P5lkRXkWHNAbcJIiHPfRoKqyd7bsyCma1hZNUGfn20qm64T6ZBlrzprymeu918H+mB/0rIg2gGK/BXkhhYgBw==
 
-uberproto@^2.0.6:
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/uberproto/-/uberproto-2.0.6.tgz#709274d183bce6fb734dfd3880d2086ed72b69e5"
-  integrity sha512-68H97HffZoFaa3HFtpstahWorN9dSp5uTU6jo3GjIQ6JkJBR3hC2Nx/e/HFOoYHdUyT/Z1MRWfxN1EiQJZUyCQ==
-
 underscore@1.9.1:
   version "1.9.1"
   resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.9.1.tgz#06dce34a0e68a7babc29b365b8e74b8925203961"
@@ -11932,6 +11895,13 @@ webpack-manifest-plugin@2.2.0:
     lodash ">=3.5 <5"
     object.entries "^1.1.0"
     tapable "^1.0.0"
+
+webpack-merge@^4.2.2:
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/webpack-merge/-/webpack-merge-4.2.2.tgz#a27c52ea783d1398afd2087f547d7b9d2f43634d"
+  integrity sha512-TUE1UGoTX2Cd42j3krGYqObZbOD+xF7u28WB7tfUordytSjbWTIjK/8V0amkBfTYN4/pB/GIDlJZZ657BGG19g==
+  dependencies:
+    lodash "^4.17.15"
 
 webpack-sources@^1.1.0, webpack-sources@^1.4.0, webpack-sources@^1.4.1, webpack-sources@^1.4.3:
   version "1.4.3"
