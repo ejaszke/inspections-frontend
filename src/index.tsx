@@ -11,8 +11,8 @@ import { icons } from './assets/icons';
 import { ToastContainer } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.min.css';
+import AuthHandlerContainer from './features/shared/containers/AuthHandlerContainer';
 
-import UserProvider from './features/user/UserProvider'
 // @ts-ignore
 React.icons = icons;
 
@@ -20,6 +20,7 @@ function render() {
     ReactDOM.render(
         <Provider store={store}>
             <ToastContainer />
+            <AuthHandlerContainer/>
             <App />
         </Provider>,
         document.getElementById('root'),

@@ -1,8 +1,8 @@
 import React, { LazyExoticComponent } from 'react';
 
-const ProductGroupContainer = React.lazy(() =>
-    import('./features/example/containers/ExampleTableContainer'),
-);
+const SignOutContainer = React.lazy(() => import('./features/user/containers/SignOutContainer'));
+const InspectionContainer = React.lazy(() => import('./features/inspections/containers/InspectionTableContainer'));
+const InspectionEditComponent = React.lazy(() => import('./features/inspections/components/InspectionEditComponent'));
 
 const Toaster = React.lazy(() => import('./views/notifications/toaster/Toaster'));
 const Tables = React.lazy(() => import('./views/base/tables/Tables'));
@@ -48,7 +48,9 @@ export interface RouteProps {
 }
 
 const businessRoutes: RouteProps[] = [
-    { path: '/example', exact: true, name: 'Product Groups', component: ProductGroupContainer },
+    { path: '/sign-out', exact: true, name: 'Wyloguj', component: SignOutContainer },
+    { path: '/all', exact: true, name: 'Inspekcje', component: InspectionContainer },
+    { path: '/all/edit/:id', exact: true, name: 'Edycja', component: InspectionEditComponent },
 ];
 
 const devRoutes: RouteProps[] = [
@@ -91,6 +93,6 @@ const devRoutes: RouteProps[] = [
     { path: '/users/:id', exact: true, name: 'User Details', component: User },
 ];
 
-const routes: RouteProps[] = [...businessRoutes, ...devRoutes];
+const routes: RouteProps[] = [...businessRoutes, ...(process.env.NODE_ENV === 'development' ? devRoutes : [])];
 
 export default routes;
