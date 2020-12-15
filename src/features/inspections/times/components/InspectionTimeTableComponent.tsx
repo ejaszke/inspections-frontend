@@ -12,6 +12,7 @@ import InspectionTimeRegisterDialogComponent from './InspectionTimeRegisterDialo
 import InspectionTimeActionsComponent from './InspectionTimeActionsComponent';
 import InspectionTimeDeleteDialogContainer from '../containers/InspectionTimeDeleteDialogContainer';
 import InspectionTimeEditDialogComponent from './InspectionTimeEditDialogComponent';
+import { InspectionTimeRepeatedFormatter } from './InspectionTimeRepeatedFormatter';
 
 const columns = [
     {
@@ -25,6 +26,17 @@ const columns = [
     {
         dataField: 'end_time',
         text: 'Godzina zakończenia',
+    },
+    {
+        dataField: 'apartment_notes',
+        text: 'Mieszkania'
+    },
+    {
+        dataField: 'is_repeated',
+        text: 'Termin poprawkowy',
+        formatter: InspectionTimeRepeatedFormatter,
+        align: 'center',
+        headerAttrs: { width: 130 },
     },
     {
         dataField: 'actions',

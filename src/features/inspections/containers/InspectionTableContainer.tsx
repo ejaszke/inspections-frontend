@@ -31,6 +31,10 @@ const columns = [
         text: 'Klatki schodowe',
     },
     {
+        dataField: 'employee',
+        text: 'Pracownik'
+    },
+    {
         dataField: 'created_at',
         text: 'Data utworzenia',
     },
@@ -74,7 +78,7 @@ export default function InspectionTableContainer() {
                     <CCardBody>
                         <InspectionRegisterDialogComponent />
                         <BootstrapTable
-                            wrapperClasses="table-responsive"
+                            wrapperClasses={inspections.length > 1 ? 'table-responsive' : ''}
                             bootstrap4
                             keyField="id"
                             data={inspections}

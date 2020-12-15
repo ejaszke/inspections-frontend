@@ -3,7 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Form, Formik } from 'formik';
 import { RootState } from '../../../app/rootReducer';
 import * as Yup from 'yup';
-import { CButton, CCol, CLabel, CModalBody, CModalFooter, CRow } from '@coreui/react';
+import {
+    CButton,
+    CCol,
+    CLabel,
+    CModalBody,
+    CModalFooter,
+    CRow
+} from '@coreui/react';
 import {
     editInspection,
     registerInspection,
@@ -12,12 +19,15 @@ import {
 } from '../store/inspectionSlice';
 import CFormikInput from '../../../core/components/CFormikInput';
 import { Inspection } from '../model/inspection';
+import CFormikSelect from '../../../core/components/CFormikSelect';
+import { inspectionEmployeesSuggestions } from '../model/inspectionEmployeesSuggestions';
 
 interface FormValues {
     city: string;
     street: string;
     street_number: string;
     staircases: string;
+    employee: string;
 }
 
 const message = 'Pole wymagane';
@@ -26,6 +36,7 @@ const validationSchema = Yup.object<FormValues>().shape({
     street: Yup.string().required(message),
     street_number: Yup.string().required(message),
     staircases: Yup.string().required(message),
+    employee: Yup.string().notRequired(),
 });
 
 interface Props {
@@ -110,6 +121,21 @@ export default function InspectionFormContainer(props: Props) {
                                 <CCol xs="6">
                                     <CLabel>{'Klatki schodowe*'}</CLabel>
                                     <CFormikInput id="staircases" name="staircases" type="text" />
+                                </CCol>
+                            </CRow>
+                            <CRow>
+                                <CCol xs="12">
+                                    <CLabel>{'Pracownik'}</CLabel>
+                                    {!isEditMode &&
+                                    <CFormikSelect name="employee" id="employee">
+                                        <option value="">Wybierz</option>
+                                        {inspectionEmployeesSuggestions.map((s, index) => (
+                                            <option value={`${s.name} ${s.phone}`} key={index}>
+                                                {`${s.name}  -  ${s.phone}`}
+                                            </option>
+                                        ))}
+                                    </CFormikSelect>}
+                                    {isEditMode && <CFormikInput id="employee" name="employee" type="text" />}
                                 </CCol>
                             </CRow>
                         </CModalBody>
