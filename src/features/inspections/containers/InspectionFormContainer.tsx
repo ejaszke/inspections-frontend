@@ -7,7 +7,6 @@ import { CButton, CCol, CLabel, CModalBody, CModalFooter, CRow } from '@coreui/r
 import {
     editInspection,
     registerInspection,
-    setUpdatedInspection,
     resetUpdatedInspection,
     setRegisterDialogOpen,
 } from '../store/inspectionSlice';

@@ -13,6 +13,3 @@ export const axiosInstance = axios.create({
     baseURL: process.env.REACT_APP_API_ENDPOINT,
     timeout: 1000,
 });
-
-const { get, post, put, delete: destroy, patch } = axiosInstance;
-export { get, post, put, destroy, patch };
