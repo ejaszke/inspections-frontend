@@ -1,4 +1,9 @@
-export const inspectionEmployeesSuggestions: {name: string, phone: string}[] = [
+interface InspectionEmployeesSuggestions  {
+	name: string;
+	phone: string;
+}
+
+export const inspectionEmployeesSuggestions: InspectionEmployeesSuggestions[] = [
 	{
 		name: 'p. Jarek', phone: '509-969-352',
 	},
@@ -21,11 +26,3 @@ export const inspectionEmployeesSuggestions: {name: string, phone: string}[] = [
 		name: 'p. Marek', phone: 'Brak numeru'
 	}
 ];
-
-// p. Jarek  - 509-969-352
-// p. Sławek – 500-421-083
-// p. Damian – 883-684-478
-// p. Maciek – 517-599-260
-// p. Marek –
-// p. Łukasz - 513-172-460
-// p. Krzysiek – 601-380-960
