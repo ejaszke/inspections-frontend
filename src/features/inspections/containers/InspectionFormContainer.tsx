@@ -3,14 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Form, Formik } from 'formik';
 import { RootState } from '../../../app/rootReducer';
 import * as Yup from 'yup';
-import {
-    CButton,
-    CCol,
-    CLabel,
-    CModalBody,
-    CModalFooter,
-    CRow
-} from '@coreui/react';
+import { CButton, CCol, CLabel, CModalBody, CModalFooter, CRow } from '@coreui/react';
 import {
     editInspection,
     registerInspection,
@@ -80,10 +73,23 @@ export default function InspectionFormContainer(props: Props) {
                             color="secondary"
                             type="button"
                             onClick={() => {
-                                window.open('http://localhost:3000/api/pdfs/' + currentInspection.id);
+                                window.open(
+                                    'https://inspections-backend.herokuapp.com/api/pdfs/adm/' + currentInspection.id,
+                                );
                             }}
                         >
-                            Wydrukuj
+                            Wydrukuj ADM
+                        </CButton>
+                        <CButton
+                            color="secondary"
+                            type="button"
+                            onClick={() => {
+                                window.open(
+                                    'https://inspections-backend.herokuapp.com/api/pdfs/dg/' + currentInspection.id,
+                                );
+                            }}
+                        >
+                            Wydrukuj DG
                         </CButton>
                     </CCol>
                 </CRow>
@@ -126,15 +132,16 @@ export default function InspectionFormContainer(props: Props) {
                             <CRow>
                                 <CCol xs="12">
                                     <CLabel>{'Pracownik'}</CLabel>
-                                    {!isEditMode &&
-                                    <CFormikSelect name="employee" id="employee">
-                                        <option value="">Wybierz</option>
-                                        {inspectionEmployeesSuggestions.map((s, index) => (
-                                            <option value={`${s.name} ${s.phone}`} key={index}>
-                                                {`${s.name}  -  ${s.phone}`}
-                                            </option>
-                                        ))}
-                                    </CFormikSelect>}
+                                    {!isEditMode && (
+                                        <CFormikSelect name="employee" id="employee">
+                                            <option value="">Wybierz</option>
+                                            {inspectionEmployeesSuggestions.map((s, index) => (
+                                                <option value={`${s.name} ${s.phone}`} key={index}>
+                                                    {`${s.name}  -  ${s.phone}`}
+                                                </option>
+                                            ))}
+                                        </CFormikSelect>
+                                    )}
                                     {isEditMode && <CFormikInput id="employee" name="employee" type="text" />}
                                 </CCol>
                             </CRow>
