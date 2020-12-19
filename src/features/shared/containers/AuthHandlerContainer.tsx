@@ -1,14 +1,15 @@
 import { useCallback, useEffect } from 'react';
-import axios from 'axios';
+
 import { useDispatch } from 'react-redux';
 import { logout } from '../../user/store/userSlice';
 import { toast } from 'react-toastify';
+import { axiosInstance } from '../../../api/base';
 
 export default function AuthHandlerContainer() {
     const dispatch = useDispatch();
 
     const initResponseInterceptor = useCallback(() => {
-        axios.interceptors.response.use(
+        axiosInstance.interceptors.response.use(
             (response) => {
                 return Promise.resolve(response);
             },
