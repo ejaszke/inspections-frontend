@@ -65,7 +65,11 @@ export default function ConfirmationFormComponent() {
                                                 </CRow>
                                                 <CRow>
                                                     <CCol xs="12">
-                                                        <CLabel>{'Dodatkowe informacje kontaktowe'}</CLabel>
+                                                        <CLabel>
+                                                            {
+                                                                'Numer klatki i mieszkanie (oraz dzień jeżeli jest więcej dostępnych terminów'
+                                                            }
+                                                        </CLabel>
                                                         <CFormikInput
                                                             id="additional_notes"
                                                             name="additional_notes"
