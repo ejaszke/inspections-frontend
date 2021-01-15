@@ -4,12 +4,12 @@ interface InspectionConfirmationSuggestions {
 
 export const inspectionConfirmationSuggestions: InspectionConfirmationSuggestions[] = [
     {
-        title: 'Potwierdzam będę dostępny w tym dniu',
+        title: 'Będę dostępny w tym dniu',
     },
     {
-        title: 'Przepraszam nie będzie mnie w tym terminie',
+        title: 'Nie będzie mnie w tym terminie',
     },
     {
-        title: 'Potwierdzam będę dostępny od godziny 18',
+        title: 'Będę dostępny od godziny 18',
     },
 ];
