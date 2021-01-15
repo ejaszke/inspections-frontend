@@ -1,5 +1,4 @@
 import { useCallback, useEffect } from 'react';
-
 import { useDispatch } from 'react-redux';
 import { logout } from '../../user/store/userSlice';
 import { toast } from 'react-toastify';

@@ -3,7 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Form, Formik } from 'formik';
 import { RootState } from '../../../app/rootReducer';
 import * as Yup from 'yup';
-import { CButton, CCol, CLabel, CModalBody, CModalFooter, CRow } from '@coreui/react';
+import {
+    CButton,
+    CCol,
+    CLabel,
+    CModalBody,
+    CModalFooter,
+    CRow
+} from '@coreui/react';
 import {
     editInspection,
     registerInspection,
@@ -132,16 +139,15 @@ export default function InspectionFormContainer(props: Props) {
                             <CRow>
                                 <CCol xs="12">
                                     <CLabel>{'Pracownik'}</CLabel>
-                                    {!isEditMode && (
-                                        <CFormikSelect name="employee" id="employee">
-                                            <option value="">Wybierz</option>
-                                            {inspectionEmployeesSuggestions.map((s, index) => (
-                                                <option value={`${s.name} ${s.phone}`} key={index}>
-                                                    {`${s.name}  -  ${s.phone}`}
-                                                </option>
-                                            ))}
-                                        </CFormikSelect>
-                                    )}
+                                    {!isEditMode &&
+                                    <CFormikSelect name="employee" id="employee">
+                                        <option value="">Wybierz</option>
+                                        {inspectionEmployeesSuggestions.map((s, index) => (
+                                            <option value={`${s.name} ${s.phone}`} key={index}>
+                                                {`${s.name}  -  ${s.phone}`}
+                                            </option>
+                                        ))}
+                                    </CFormikSelect>}
                                     {isEditMode && <CFormikInput id="employee" name="employee" type="text" />}
                                 </CCol>
                             </CRow>

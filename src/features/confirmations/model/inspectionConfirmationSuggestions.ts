@@ -1,4 +1,8 @@
-export const inspectionConfirmationSuggestions: { title: string }[] = [
+interface InspectionConfirmationSuggestions {
+    title: string;
+}
+
+export const inspectionConfirmationSuggestions: InspectionConfirmationSuggestions[] = [
     {
         title: 'Będę dostępny w tym dniu',
     },
