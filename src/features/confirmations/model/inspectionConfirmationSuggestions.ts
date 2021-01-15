@@ -1,6 +1,8 @@
-import { Suggestions } from './sugesstions';
+interface InspectionConfirmationSuggestions {
+    title: string;
+}
 
-export const inspectionConfirmationSuggestions: Suggestions[] = [
+export const inspectionConfirmationSuggestions: InspectionConfirmationSuggestions[] = [
     {
         title: 'Potwierdzam będę dostępny w tym dniu',
     },

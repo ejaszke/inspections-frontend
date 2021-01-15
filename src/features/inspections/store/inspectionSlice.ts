@@ -22,6 +22,7 @@ const initialState: InspectionsState = {
         street: '',
         street_number: '',
         staircases: '',
+        employee: ''
     },
     deleteData: null,
     isDeleteDialogOpen: false,

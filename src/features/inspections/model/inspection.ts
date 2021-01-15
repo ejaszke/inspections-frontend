@@ -7,6 +7,7 @@ export interface Inspection {
     street: string;
     street_number: string;
     staircases: string;
+    employee: string;
     created_at?: string;
     updated_at?: string;
     times?: InspectionTime[];
