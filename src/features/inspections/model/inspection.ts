@@ -8,6 +8,7 @@ export interface Inspection {
     street_number: string;
     staircases: string;
     employee: string;
+    flat_count: string;
     created_at?: string;
     updated_at?: string;
     times?: InspectionTime[];

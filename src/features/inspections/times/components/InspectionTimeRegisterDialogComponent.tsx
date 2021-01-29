@@ -20,7 +20,7 @@ export default function InspectionTimeRegisterDialogComponent() {
             <CModal
                 show={isDialogOpen}
                 closeOnBackdrop={false}
-                size={'lg'}
+                size={'sm'}
                 onClose={() => dispatch(setRegisterDialogOpen(false))}
             >
                 <CModalHeader closeButton>

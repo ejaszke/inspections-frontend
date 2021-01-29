@@ -93,25 +93,25 @@ export default function InspectionTimesFormContainer(props: Props) {
 				<Form>
 					<CModalBody>
 						<CRow>
-							<CCol xs="4">
+							<CCol xs="12">
 								<CLabel>{'Data*'}</CLabel>
 								<CFormikInput id="date" name="date" type="date"/>
 							</CCol>
-							<CCol xs="4">
+							<CCol xs="12">
 								<CLabel>{'Godzina rozpoczęcia*'}</CLabel>
 								<CFormikInput id="start_time" name="start_time" type="text" placeholder="HH:MM"/>
 							</CCol>
-							<CCol xs="4">
+							<CCol xs="12">
 								<CLabel>{'Godzina zakończenia*'}</CLabel>
 								<CFormikInput id="end_time" name="end_time" type="text" placeholder="HH:MM"/>
 							</CCol>
 						</CRow>
 						<CRow>
-							<CCol xs="8">
+							<CCol xs="12">
 								<CLabel>{'Mieszkania'}</CLabel>
 								<CFormikInput id="apartment_notes" name="apartment_notes" type="text"/>
 							</CCol>
-							<CCol xs="4">
+							<CCol xs="12">
 								<CFormGroup variant="custom-checkbox">
 									<CInputCheckbox id="is_repeated"
 													name="is_repeated"

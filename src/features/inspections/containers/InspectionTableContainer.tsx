@@ -39,6 +39,10 @@ const columns = [
         text: 'Data utworzenia',
     },
     {
+        dataField: 'flat_count',
+        text: 'Ilość mieszkań'
+    },
+    {
         dataField: 'actions',
         text: '',
         formatter: InspectionActionsComponent,

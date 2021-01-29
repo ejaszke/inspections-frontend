@@ -13,7 +13,7 @@ export default function InspectionTimeEditDialogComponent() {
         <CModal
             show={isDialogOpen}
             closeOnBackdrop={false}
-            size={'lg'}
+            size={'sm'}
             onClose={() => dispatch(setEditDialogOpen(false, null))}
         >
             <CModalHeader closeButton>

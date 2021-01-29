@@ -13,8 +13,8 @@ import {
 } from '@coreui/react';
 
 // sidebar nav config
-import navigation from './_nav';
 import { RootState } from '../app/rootReducer';
+import navigation from './_nav';
 
 const TheSidebar = () => {
     const dispatch = useDispatch();
