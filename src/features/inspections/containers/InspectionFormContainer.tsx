@@ -28,6 +28,7 @@ interface FormValues {
     street_number: string;
     staircases: string;
     employee: string;
+    flat_count: string;
 }
 
 const message = 'Pole wymagane';
@@ -37,6 +38,7 @@ const validationSchema = Yup.object<FormValues>().shape({
     street_number: Yup.string().required(message),
     staircases: Yup.string().required(message),
     employee: Yup.string().notRequired(),
+    flat_count: Yup.string().required(message)
 });
 
 interface Props {
@@ -137,7 +139,11 @@ export default function InspectionFormContainer(props: Props) {
                                 </CCol>
                             </CRow>
                             <CRow>
-                                <CCol xs="12">
+                                <CCol xs="6">
+                                    <CLabel>{'Ilość mieszkań*'}</CLabel>
+                                    <CFormikInput id="flat_count" name="flat_count" type="text" />
+                                </CCol>
+                                <CCol xs="6">
                                     <CLabel>{'Pracownik'}</CLabel>
                                     {!isEditMode &&
                                     <CFormikSelect name="employee" id="employee">

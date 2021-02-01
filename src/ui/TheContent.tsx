@@ -21,7 +21,6 @@ const TheContent = () => {
                         {routes.map((route, idx) => (
                             <PrivateRoute key={idx} exact={route.exact} path={route.path} component={route.component} />
                         ))}
-                        {/*<Redirect from="/" to="/product-group" />*/}
                     </Switch>
                 </Suspense>
             </CContainer>
