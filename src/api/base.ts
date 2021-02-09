@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'axios';
 import { Token } from '../features/user/model/token';
 
 export const axiosInstance = axios.create({

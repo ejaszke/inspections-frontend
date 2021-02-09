@@ -32,7 +32,7 @@ const columns = [
     },
     {
         dataField: 'employee',
-        text: 'Pracownik'
+        text: 'Pracownik',
     },
     {
         dataField: 'created_at',
@@ -40,7 +40,7 @@ const columns = [
     },
     {
         dataField: 'flat_count',
-        text: 'Ilość mieszkań'
+        text: 'Ilość mieszkań',
     },
     {
         dataField: 'actions',

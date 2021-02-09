@@ -29,7 +29,7 @@ const columns = [
     },
     {
         dataField: 'apartment_notes',
-        text: 'Mieszkania'
+        text: 'Mieszkania',
     },
     {
         dataField: 'is_repeated',

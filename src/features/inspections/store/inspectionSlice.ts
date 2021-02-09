@@ -18,12 +18,12 @@ const initialState: InspectionsState = {
     inspections: [],
     isRegisterDialogOpen: false,
     updatedInspection: {
-        city: '',
-        street: '',
-        street_number: '',
-        staircases: '',
-        employee: '',
-        flat_count: ''
+        city: '2',
+        street: '2',
+        street_number: '2',
+        staircases: '2',
+        employee: '2',
+        flat_count: '2',
     },
     deleteData: null,
     isDeleteDialogOpen: false,
